@@ -4,71 +4,229 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Soluntion Labs</title>
+<meta name="description" content="Soluntion Labs builds simple privacy and safety apps, including Tracker Radar, which finds hidden Bluetooth trackers like AirTags, SmartTags and Tile.">
+<link rel="canonical" href="https://soluntion.com/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Soluntion Labs">
+<meta property="og:description" content="Privacy and safety apps that stay on your device. Home of Tracker Radar.">
+<meta property="og:url" content="https://soluntion.com/">
+<meta property="og:image" content="https://soluntion.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1117">
 <style>
   :root {
-    color-scheme: light dark;
-    --bg: #ffffff;
-    --fg: #1a1a1a;
-    --muted: #5a5a5a;
-    --accent: #2f6fed;
-    --rule: #e2e2e2;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #121212;
-      --fg: #ececec;
-      --muted: #a8a8a8;
-      --accent: #6fa1ff;
-      --rule: #2a2a2a;
-    }
+    color-scheme: dark;
+    --bg: #0b1117;
+    --card: #121a22;
+    --card-edge: #1f2b36;
+    --fg: #e8eef2;
+    --muted: #93a4b1;
+    --green: #00e676;
+    --cyan: #00e5ff;
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--fg);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
-  main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 48px 24px 80px;
+  a { color: var(--cyan); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  header.site {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
   }
-  h1 { font-size: 1.7rem; margin-bottom: 4px; }
-  .tagline { color: var(--muted); margin-bottom: 32px; }
-  h2 {
-    font-size: 1.05rem;
-    letter-spacing: 0.02em;
-    margin-top: 36px;
-    margin-bottom: 8px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--rule);
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--fg); font-weight: 700; font-size: 1.1rem; white-space: nowrap; }
+  .brand img { width: 36px; height: 36px; border-radius: 9px; }
+  nav { white-space: nowrap; }
+  nav a { color: var(--muted); text-decoration: none; margin-left: 22px; font-size: 0.95rem; }
+  nav a:hover { color: var(--fg); }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 72px 0 88px;
   }
-  p { margin: 0 0 16px; }
-  a { color: var(--accent); }
-  footer {
-    margin-top: 48px;
-    padding-top: 16px;
-    border-top: 1px solid var(--rule);
-    color: var(--muted);
-    font-size: 0.85rem;
+  .hero::before {
+    content: "";
+    position: absolute;
+    right: -180px;
+    top: -120px;
+    width: 640px;
+    height: 640px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle, transparent 0 60px, rgba(0,230,118,0.16) 61px 63px, transparent 64px 130px,
+        rgba(0,230,118,0.12) 131px 133px, transparent 134px 200px,
+        rgba(0,230,118,0.09) 201px 203px, transparent 204px 270px,
+        rgba(0,230,118,0.06) 271px 273px, transparent 274px);
+    pointer-events: none;
+  }
+  .hero > .wrap { position: relative; }
+  .eyebrow { color: var(--green); font-weight: 600; letter-spacing: 0.08em; font-size: 0.8rem; text-transform: uppercase; }
+  h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; margin: 12px 0 16px; max-width: 16ch; }
+  .lede { color: var(--muted); font-size: 1.15rem; max-width: 46ch; margin: 0 0 32px; }
+
+  .btn {
+    display: inline-block;
+    background: var(--green);
+    color: #04210f;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 13px 24px;
+    border-radius: 999px;
+  }
+  .btn:hover { filter: brightness(1.08); }
+  .btn.ghost { background: transparent; color: var(--fg); border: 1px solid var(--card-edge); margin-left: 10px; font-weight: 600; }
+
+  section { padding: 56px 0; border-top: 1px solid var(--card-edge); }
+  h2 { font-size: 1.6rem; margin: 0 0 8px; }
+  .sub { color: var(--muted); margin: 0 0 28px; }
+
+  .app {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    border-radius: 20px;
+    padding: 28px;
+  }
+  .app-head { display: flex; align-items: center; gap: 16px; }
+  .app-head img { width: 72px; height: 72px; border-radius: 18px; }
+  .app-head h3 { margin: 0; font-size: 1.4rem; }
+  .app-head p { margin: 2px 0 0; color: var(--green); }
+  .app ul { margin: 14px 0 20px; padding-left: 0; list-style: none; }
+  .app li { padding: 5px 0 5px 28px; position: relative; }
+  .app li::before { content: "\2713"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+  .note { color: var(--muted); font-size: 0.92rem; margin-top: 18px; }
+
+  .shots {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 2px 14px;
+    margin: 0 -2px;
+  }
+  .shots img {
+    flex: 0 0 auto;
+    height: 420px;
+    width: auto;
+    border-radius: 16px;
+    border: 1px solid var(--card-edge);
+    scroll-snap-align: start;
+    background: #000;
+  }
+
+  .contact a.mail { font-size: 1.15rem; font-weight: 600; }
+
+  footer.site { border-top: 1px solid var(--card-edge); padding: 28px 0 56px; color: var(--muted); font-size: 0.88rem; }
+  footer.site .links a { color: var(--muted); margin-right: 20px; }
+  footer.site p { margin: 14px 0 0; max-width: 78ch; }
+
+  @media (min-width: 820px) {
+    .app { padding: 36px; }
+    .app ul { max-width: 62ch; }
+    .note { max-width: 62ch; }
+  }
+  @media (max-width: 560px) {
+    .hero { padding: 48px 0 56px; }
+    .btn.ghost { margin: 12px 0 0; }
+    .shots img { height: 340px; }
+    nav a:first-child { display: none; }
+    nav a { margin-left: 16px; }
+    .brand { font-size: 1rem; gap: 10px; }
+  }
+  @media (max-width: 420px) {
+    nav { display: none; }
   }
 </style>
 </head>
 <body>
+
+<div class="wrap">
+  <header class="site">
+    <a class="brand" href="/"><img src="assets/icon-192.png" alt="" width="36" height="36">Soluntion Labs</a>
+    <nav>
+      <a href="#apps">Apps</a>
+      <a href="/tracker-radar-privacy/">Privacy</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+</div>
+
 <main>
-  <h1>Soluntion Labs</h1>
-  <p class="tagline">Apps built to help you protect your privacy and safety.</p>
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Soluntion Labs</div>
+      <h1>Privacy tools that stay on your device.</h1>
+      <p class="lede">We build simple apps that help you protect your privacy and personal safety. No account required.</p>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.soluntion.trackerradar">Get Tracker Radar on Google Play</a>
+      <a class="btn ghost" href="#apps">Learn more</a>
+    </div>
+  </div>
 
-  <h2>TRACKER RADAR</h2>
-  <p>Tracker Radar scans for nearby Bluetooth trackers such as AirTags, SmartTags, Tile devices, and other BLE beacons, so you can tell if one is following you. Available on Google Play.</p>
-  <p><a href="https://sbdjb.github.io/tracker-radar-privacy/">Privacy Policy</a></p>
+  <section id="apps">
+    <div class="wrap">
+      <h2>Our app</h2>
+      <p class="sub">Built for people who want to know who's keeping tabs on them.</p>
 
-  <h2>CONTACT</h2>
-  <p>Questions or support requests: <a href="mailto:support@soluntion.com">support@soluntion.com</a></p>
+      <div class="app">
+        <div>
+          <div class="app-head">
+            <img src="assets/icon-192.png" alt="Tracker Radar app icon" width="72" height="72">
+            <div>
+              <h3>Tracker Radar</h3>
+              <p>Find hidden Bluetooth trackers</p>
+            </div>
+          </div>
+          <ul>
+            <li>Scan for nearby AirTags, Samsung SmartTags, Tile and Google Find Hub trackers in seconds</li>
+            <li>Live proximity locator with audio pings that speed up as you get closer</li>
+            <li>Tells trackers near their own owner apart from ones that aren't, to cut false alarms</li>
+            <li>Play a tracker's built-in sound to pinpoint it (AirTag and Find Hub devices)</li>
+            <li>Premium: background alerts when a tracker follows you, full scan history, automatic re-scanning, and no ads</li>
+          </ul>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.soluntion.trackerradar">Get it on Google Play</a>
+          <p class="note">Your Bluetooth scan results are processed on your device and are never uploaded. Free to use, with an optional Premium subscription. Available in 10 languages.</p>
+        </div>
+        <div class="shots" aria-label="Tracker Radar screenshots">
+          <img src="assets/shot1.webp" alt="Tracker Radar scan results" loading="lazy">
+          <img src="assets/shot2.webp" alt="Live proximity locator" loading="lazy">
+          <img src="assets/shot3.webp" alt="Scan history report" loading="lazy">
+          <img src="assets/shot4.webp" alt="Hidden trackers list" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <footer>Soluntion Labs</footer>
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p class="sub">Questions, feedback or support requests are welcome.</p>
+      <a class="mail" href="mailto:support@soluntion.com">support@soluntion.com</a>
+    </div>
+  </section>
 </main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="links">
+      <a href="/tracker-radar-privacy/">Privacy Policy</a>
+      <a href="mailto:support@soluntion.com">Contact</a>
+    </div>
+    <p>&copy; 2026 Soluntion Labs. Google Play is a trademark of Google LLC. AirTag is a trademark of Apple Inc.; SmartTag is a trademark of Samsung; Tile is a trademark of Tile, Inc. Tracker Radar is an independent app and is not affiliated with or endorsed by these companies.</p>
+  </div>
+</footer>
+
 </body>
 </html>
