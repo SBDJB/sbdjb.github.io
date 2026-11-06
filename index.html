@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Soluntion Labs</title>
-<meta name="description" content="Soluntion Labs builds simple privacy and safety apps, including Tracker Radar, which finds hidden Bluetooth trackers like AirTags, SmartTags and Tile.">
+<meta name="description" content="Soluntion Labs builds simple, private Android apps: Tracker Radar, Pressura, Fortune Cookie, Fortune Horoscope and Loan Compare. No account required.">
 <link rel="canonical" href="https://soluntion.com/">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Soluntion Labs">
-<meta property="og:description" content="Privacy and safety apps that stay on your device. Home of Tracker Radar.">
+<meta property="og:description" content="Simple apps that keep your data on your device. Tracker Radar, Pressura, Fortune Cookie, Fortune Horoscope and Loan Compare.">
 <meta property="og:url" content="https://soluntion.com/">
 <meta property="og:image" content="https://soluntion.com/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -86,29 +86,38 @@
   }
   .btn:hover { filter: brightness(1.08); }
   .btn.ghost { background: transparent; color: var(--fg); border: 1px solid var(--card-edge); margin-left: 10px; font-weight: 600; }
+  .btn.small { padding: 10px 18px; font-size: 0.92rem; }
 
   section { padding: 56px 0; border-top: 1px solid var(--card-edge); }
   h2 { font-size: 1.6rem; margin: 0 0 8px; }
   .sub { color: var(--muted); margin: 0 0 28px; }
 
-  .app {
+  .apps {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 28px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .app {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
     background: var(--card);
     border: 1px solid var(--card-edge);
     border-radius: 20px;
-    padding: 28px;
+    padding: 24px;
   }
   .app-head { display: flex; align-items: center; gap: 16px; }
-  .app-head img { width: 72px; height: 72px; border-radius: 18px; }
-  .app-head h3 { margin: 0; font-size: 1.4rem; }
-  .app-head p { margin: 2px 0 0; color: var(--green); }
-  .app ul { margin: 14px 0 20px; padding-left: 0; list-style: none; }
-  .app li { padding: 5px 0 5px 28px; position: relative; }
+  .app-head img { width: 64px; height: 64px; border-radius: 16px; flex: 0 0 auto; }
+  .app-head h3 { margin: 0; font-size: 1.3rem; }
+  .app-head p { margin: 2px 0 0; color: var(--green); font-size: 0.95rem; }
+  .app ul { margin: 14px 0 18px; padding-left: 0; list-style: none; flex: 1; }
+  .app li { padding: 4px 0 4px 26px; position: relative; }
   .app li::before { content: "\2713"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
-  .note { color: var(--muted); font-size: 0.92rem; margin-top: 18px; }
+  .app-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 18px; }
+  .app-foot a.policy { color: var(--muted); font-size: 0.9rem; }
+  .note { color: var(--muted); font-size: 0.88rem; margin: 14px 0 0; }
 
+  .app.featured { gap: 24px; }
   .shots {
     display: flex;
     gap: 16px;
@@ -119,13 +128,16 @@
   }
   .shots img {
     flex: 0 0 auto;
-    height: 420px;
+    height: 380px;
     width: auto;
     border-radius: 16px;
     border: 1px solid var(--card-edge);
     scroll-snap-align: start;
     background: #000;
   }
+
+  .policies { list-style: none; padding: 0; margin: 0; columns: 2 220px; }
+  .policies li { padding: 4px 0; }
 
   .contact a.mail { font-size: 1.15rem; font-weight: 600; }
 
@@ -134,14 +146,15 @@
   footer.site p { margin: 14px 0 0; max-width: 78ch; }
 
   @media (min-width: 820px) {
-    .app { padding: 36px; }
-    .app ul { max-width: 62ch; }
-    .note { max-width: 62ch; }
+    .apps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .app.featured { grid-column: 1 / -1; padding: 32px; }
+    .app.featured ul { max-width: 62ch; }
   }
   @media (max-width: 560px) {
     .hero { padding: 48px 0 56px; }
     .btn.ghost { margin: 12px 0 0; }
-    .shots img { height: 340px; }
+    .shots img { height: 320px; }
+    .app { padding: 20px; }
     nav a:first-child { display: none; }
     nav a { margin-left: 16px; }
     .brand { font-size: 1rem; gap: 10px; }
@@ -158,7 +171,7 @@
     <a class="brand" href="/"><img src="assets/icon-192.png" alt="" width="36" height="36">Soluntion Labs</a>
     <nav>
       <a href="#apps">Apps</a>
-      <a href="/tracker-radar-privacy/">Privacy</a>
+      <a href="#privacy">Privacy</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -168,51 +181,156 @@
   <div class="hero">
     <div class="wrap">
       <div class="eyebrow">Soluntion Labs</div>
-      <h1>Privacy tools that stay on your device.</h1>
-      <p class="lede">We build simple apps that help you protect your privacy and personal safety. No account required.</p>
-      <a class="btn" href="https://play.google.com/store/apps/details?id=com.soluntion.trackerradar">Get Tracker Radar on Google Play</a>
-      <a class="btn ghost" href="#apps">Learn more</a>
+      <h1>Simple apps that keep your data on your device.</h1>
+      <p class="lede">From finding hidden trackers to logging your blood pressure, we build focused Android apps with no account required.</p>
+      <a class="btn" href="#apps">See our apps</a>
+      <a class="btn ghost" href="#contact">Contact us</a>
     </div>
   </div>
 
   <section id="apps">
     <div class="wrap">
-      <h2>Our app</h2>
-      <p class="sub">Built for people who want to know who's keeping tabs on them.</p>
+      <h2>Our apps</h2>
+      <p class="sub">All five are free on Google Play.</p>
 
-      <div class="app">
-        <div>
+      <div class="apps">
+
+        <article class="app featured" id="tracker-radar">
+          <div>
+            <div class="app-head">
+              <img src="assets/icon-192.png" alt="Tracker Radar app icon" width="64" height="64">
+              <div>
+                <h3>Tracker Radar</h3>
+                <p>Find hidden Bluetooth trackers</p>
+              </div>
+            </div>
+            <ul>
+              <li>Scan for nearby AirTags, Samsung SmartTags, Tile and Google Find Hub trackers in seconds</li>
+              <li>Live proximity locator with audio pings that speed up as you get closer</li>
+              <li>Tells trackers near their own owner apart from ones that aren't, to cut false alarms</li>
+              <li>Premium: background alerts when a tracker follows you, full scan history and no ads</li>
+            </ul>
+            <div class="app-foot">
+              <a class="btn small" href="https://play.google.com/store/apps/details?id=com.soluntion.trackerradar">Get it on Google Play</a>
+              <a class="policy" href="/tracker-radar-privacy/">Privacy policy</a>
+            </div>
+            <p class="note">Scan results are processed on your device and never uploaded. Available in 10 languages.</p>
+          </div>
+          <div class="shots" aria-label="Tracker Radar screenshots">
+            <img src="assets/shot1.webp" alt="Tracker Radar scan results" loading="lazy">
+            <img src="assets/shot2.webp" alt="Live proximity locator" loading="lazy">
+            <img src="assets/shot3.webp" alt="Scan history report" loading="lazy">
+            <img src="assets/shot4.webp" alt="Hidden trackers list" loading="lazy">
+          </div>
+        </article>
+
+        <article class="app" id="pressura">
           <div class="app-head">
-            <img src="assets/icon-192.png" alt="Tracker Radar app icon" width="72" height="72">
+            <img src="assets/icon-pressura.webp" alt="Pressura app icon" width="64" height="64">
             <div>
-              <h3>Tracker Radar</h3>
-              <p>Find hidden Bluetooth trackers</p>
+              <h3>Pressura</h3>
+              <p>Blood pressure log</p>
             </div>
           </div>
           <ul>
-            <li>Scan for nearby AirTags, Samsung SmartTags, Tile and Google Find Hub trackers in seconds</li>
-            <li>Live proximity locator with audio pings that speed up as you get closer</li>
-            <li>Tells trackers near their own owner apart from ones that aren't, to cut false alarms</li>
-            <li>Play a tracker's built-in sound to pinpoint it (AirTag and Find Hub devices)</li>
-            <li>Premium: background alerts when a tracker follows you, full scan history, automatic re-scanning, and no ads</li>
+            <li>Log systolic, diastolic and pulse in seconds, with American Heart Association categories</li>
+            <li>Scan your monitor's display with the camera; the photo is read on your phone and deleted</li>
+            <li>Day, week, month and year trends, plus a daily reminder</li>
+            <li>Export your readings to share with your doctor</li>
           </ul>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.soluntion.trackerradar">Get it on Google Play</a>
-          <p class="note">Your Bluetooth scan results are processed on your device and are never uploaded. Free to use, with an optional Premium subscription. Available in 10 languages.</p>
-        </div>
-        <div class="shots" aria-label="Tracker Radar screenshots">
-          <img src="assets/shot1.webp" alt="Tracker Radar scan results" loading="lazy">
-          <img src="assets/shot2.webp" alt="Live proximity locator" loading="lazy">
-          <img src="assets/shot3.webp" alt="Scan history report" loading="lazy">
-          <img src="assets/shot4.webp" alt="Hidden trackers list" loading="lazy">
-        </div>
+          <div class="app-foot">
+            <a class="btn small" href="https://play.google.com/store/apps/details?id=com.soluntion.pressura">Get it on Google Play</a>
+            <a class="policy" href="/pressura-privacy/">Privacy policy</a>
+          </div>
+          <p class="note">Pressura is a logbook, not a medical device, and does not give medical advice.</p>
+        </article>
+
+        <article class="app" id="loan-compare">
+          <div class="app-head">
+            <img src="assets/icon-loancompare.webp" alt="Loan Compare app icon" width="64" height="64">
+            <div>
+              <h3>Loan Compare</h3>
+              <p>Compare personal loan lenders</p>
+            </div>
+          </div>
+          <ul>
+            <li>See lenders side by side, lowest starting APR first</li>
+            <li>Estimated monthly payments for the amount and term you choose</li>
+            <li>Plain-English guides to APR, fees, credit scores and prequalification</li>
+            <li>No account, no personal details and no device permissions</li>
+          </ul>
+          <div class="app-foot">
+            <a class="btn small" href="https://play.google.com/store/apps/details?id=com.soluntion.loancompare">Get it on Google Play</a>
+            <a class="policy" href="https://loans.soluntion.com/">Website</a>
+            <a class="policy" href="https://loans.soluntion.com/privacy.html">Privacy policy</a>
+          </div>
+          <p class="note">Loan Compare is not a lender and does not make loans or credit decisions.</p>
+        </article>
+
+        <article class="app" id="fortune-cookie">
+          <div class="app-head">
+            <img src="assets/icon-fortunecookie.webp" alt="Fortune Cookie app icon" width="64" height="64">
+            <div>
+              <h3>Fortune Cookie</h3>
+              <p>A new fortune every day</p>
+            </div>
+          </div>
+          <ul>
+            <li>Tap the cookie, hear the crack and read today's fortune with six lucky numbers</li>
+            <li>888 hand-written fortunes, plus rare golden, mystery and love cookies</li>
+            <li>Daily streaks and a collection of every fortune you've cracked</li>
+            <li>Share any fortune as a picture</li>
+          </ul>
+          <div class="app-foot">
+            <a class="btn small" href="https://play.google.com/store/apps/details?id=com.soluntion.fortunecookie">Get it on Google Play</a>
+            <a class="policy" href="/fortune-cookie-privacy/">Privacy policy</a>
+          </div>
+          <p class="note">Free with ads, with an optional one-time purchase to remove them.</p>
+        </article>
+
+        <article class="app" id="fortune-horoscope">
+          <div class="app-head">
+            <img src="assets/icon-fortunehoroscope.webp" alt="Fortune Horoscope app icon" width="64" height="64">
+            <div>
+              <h3>Fortune Horoscope</h3>
+              <p>Daily, monthly and yearly readings</p>
+            </div>
+          </div>
+          <ul>
+            <li>Tap the crystal orb to reveal today's horoscope, written for your sign</li>
+            <li>Star ratings for love, career, money and health</li>
+            <li>Lucky number, lucky colour, power days and personal numerology</li>
+            <li>Your name and birthday stay on your phone</li>
+          </ul>
+          <div class="app-foot">
+            <a class="btn small" href="https://play.google.com/store/apps/details?id=com.soluntion.fortunehoroscope">Get it on Google Play</a>
+            <a class="policy" href="/fortune-horoscope-privacy/">Privacy policy</a>
+          </div>
+          <p class="note">Free with ads, with an optional one-time purchase to remove them.</p>
+        </article>
+
       </div>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="wrap">
+      <h2>Privacy policies</h2>
+      <p class="sub">None of our apps require an account. Each policy explains exactly what the app stores and why.</p>
+      <ul class="policies">
+        <li><a href="/tracker-radar-privacy/">Tracker Radar</a></li>
+        <li><a href="/pressura-privacy/">Pressura</a></li>
+        <li><a href="https://loans.soluntion.com/privacy.html">Loan Compare</a></li>
+        <li><a href="/fortune-cookie-privacy/">Fortune Cookie</a></li>
+        <li><a href="/fortune-horoscope-privacy/">Fortune Horoscope</a></li>
+      </ul>
     </div>
   </section>
 
   <section id="contact" class="contact">
     <div class="wrap">
       <h2>Contact</h2>
-      <p class="sub">Questions, feedback or support requests are welcome.</p>
+      <p class="sub">Questions, feedback or support requests for any of our apps are welcome.</p>
       <a class="mail" href="mailto:support@soluntion.com">support@soluntion.com</a>
     </div>
   </section>
@@ -221,10 +339,10 @@
 <footer class="site">
   <div class="wrap">
     <div class="links">
-      <a href="/tracker-radar-privacy/">Privacy Policy</a>
+      <a href="#privacy">Privacy policies</a>
       <a href="mailto:support@soluntion.com">Contact</a>
     </div>
-    <p>&copy; 2026 Soluntion Labs. Google Play is a trademark of Google LLC. AirTag is a trademark of Apple Inc.; SmartTag is a trademark of Samsung; Tile is a trademark of Tile, Inc. Tracker Radar is an independent app and is not affiliated with or endorsed by these companies.</p>
+    <p>&copy; 2026 Soluntion Labs. Google Play is a trademark of Google LLC. AirTag is a trademark of Apple Inc.; SmartTag is a trademark of Samsung; Tile is a trademark of Tile, Inc. Our apps are independent and are not affiliated with or endorsed by these companies.</p>
   </div>
 </footer>
 
