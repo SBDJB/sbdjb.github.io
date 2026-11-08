@@ -13,17 +13,17 @@
 <meta property="og:url" content="https://soluntion.com/">
 <meta property="og:image" content="https://soluntion.com/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0b1117">
+<meta name="theme-color" content="#ede3d3">
 <style>
   :root {
-    color-scheme: dark;
-    --bg: #0b1117;
-    --card: #121a22;
-    --card-edge: #1f2b36;
-    --fg: #e8eef2;
-    --muted: #93a4b1;
-    --green: #00e676;
-    --cyan: #00e5ff;
+    color-scheme: light;
+    --bg: #ede3d3;
+    --card: #fffdf9;
+    --card-edge: #ddd0bb;
+    --fg: #2a2118;
+    --muted: #68583f;
+    --green: #a8370a;
+    --cyan: #7f3d08;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -64,10 +64,10 @@
     height: 640px;
     border-radius: 50%;
     background:
-      radial-gradient(circle, transparent 0 60px, rgba(0,230,118,0.16) 61px 63px, transparent 64px 130px,
-        rgba(0,230,118,0.12) 131px 133px, transparent 134px 200px,
-        rgba(0,230,118,0.09) 201px 203px, transparent 204px 270px,
-        rgba(0,230,118,0.06) 271px 273px, transparent 274px);
+      radial-gradient(circle, transparent 0 60px, rgba(168,55,10,0.16) 61px 63px, transparent 64px 130px,
+        rgba(168,55,10,0.12) 131px 133px, transparent 134px 200px,
+        rgba(168,55,10,0.09) 201px 203px, transparent 204px 270px,
+        rgba(168,55,10,0.06) 271px 273px, transparent 274px);
     pointer-events: none;
   }
   .hero > .wrap { position: relative; }
@@ -78,7 +78,7 @@
   .btn {
     display: inline-block;
     background: var(--green);
-    color: #04210f;
+    color: #ffffff;
     font-weight: 700;
     text-decoration: none;
     padding: 13px 24px;
@@ -105,6 +105,7 @@
     border: 1px solid var(--card-edge);
     border-radius: 20px;
     padding: 24px;
+    box-shadow: 0 1px 3px rgba(60,40,10,.08);
   }
   .app-head { display: flex; align-items: center; gap: 16px; }
   .app-head img { width: 64px; height: 64px; border-radius: 16px; flex: 0 0 auto; }
@@ -114,6 +115,8 @@
   .app li { padding: 4px 0 4px 26px; position: relative; }
   .app li::before { content: "\2713"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
   .app-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 18px; }
+  .play { display: inline-block; margin-left: -6px; line-height: 0; }
+  .play img { display: block; height: 60px; width: auto; }
   .app-foot a.policy { color: var(--muted); font-size: 0.9rem; }
   .note { color: var(--muted); font-size: 0.88rem; margin: 14px 0 0; }
 
@@ -211,7 +214,7 @@
               <li>Premium: background alerts when a tracker follows you, full scan history and no ads</li>
             </ul>
             <div class="app-foot">
-              <a class="btn small" href="https://play.google.com/store/apps/details?id=com.soluntion.trackerradar">Get it on Google Play</a>
+              <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.trackerradar"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
               <a class="policy" href="/tracker-radar-privacy/">Privacy policy</a>
             </div>
             <p class="note">Scan results are processed on your device and never uploaded. Available in 10 languages.</p>
@@ -239,7 +242,7 @@
             <li>Export your readings to share with your doctor</li>
           </ul>
           <div class="app-foot">
-            <a class="btn small" href="https://play.google.com/store/apps/details?id=com.soluntion.pressura">Get it on Google Play</a>
+            <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.pressura"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
             <a class="policy" href="/pressura-privacy/">Privacy policy</a>
           </div>
           <p class="note">Pressura is a logbook, not a medical device, and does not give medical advice.</p>
@@ -260,7 +263,7 @@
             <li>No account, no personal details and no device permissions</li>
           </ul>
           <div class="app-foot">
-            <a class="btn small" href="https://play.google.com/store/apps/details?id=com.soluntion.loancompare">Get it on Google Play</a>
+            <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.loancompare"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
             <a class="policy" href="https://loans.soluntion.com/">Website</a>
             <a class="policy" href="https://loans.soluntion.com/privacy.html">Privacy policy</a>
           </div>
@@ -282,7 +285,7 @@
             <li>Share any fortune as a picture</li>
           </ul>
           <div class="app-foot">
-            <a class="btn small" href="https://play.google.com/store/apps/details?id=com.soluntion.fortunecookie">Get it on Google Play</a>
+            <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.fortunecookie"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
             <a class="policy" href="/fortune-cookie-privacy/">Privacy policy</a>
           </div>
           <p class="note">Free with ads, with an optional one-time purchase to remove them.</p>
@@ -303,7 +306,7 @@
             <li>Your name and birthday stay on your phone</li>
           </ul>
           <div class="app-foot">
-            <a class="btn small" href="https://play.google.com/store/apps/details?id=com.soluntion.fortunehoroscope">Get it on Google Play</a>
+            <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.fortunehoroscope"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
             <a class="policy" href="/fortune-horoscope-privacy/">Privacy policy</a>
           </div>
           <p class="note">Free with ads, with an optional one-time purchase to remove them.</p>
@@ -342,7 +345,7 @@
       <a href="#privacy">Privacy policies</a>
       <a href="mailto:support@soluntion.com">Contact</a>
     </div>
-    <p>&copy; 2026 Soluntion Labs. Google Play is a trademark of Google LLC. AirTag is a trademark of Apple Inc.; SmartTag is a trademark of Samsung; Tile is a trademark of Tile, Inc. Our apps are independent and are not affiliated with or endorsed by these companies.</p>
+    <p>&copy; 2026 Soluntion Labs. Google Play and the Google Play logo are trademarks of Google LLC. AirTag is a trademark of Apple Inc.; SmartTag is a trademark of Samsung; Tile is a trademark of Tile, Inc. Our apps are independent and are not affiliated with or endorsed by these companies.</p>
   </div>
 </footer>
 
