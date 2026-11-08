@@ -114,9 +114,19 @@
   .app ul { margin: 14px 0 18px; padding-left: 0; list-style: none; flex: 1; }
   .app li { padding: 4px 0 4px 26px; position: relative; }
   .app li::before { content: "\2713"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
-  .app-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 18px; }
+  .app-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 18px; }
+  .stores { display: flex; align-items: center; gap: 8px; flex-basis: 100%; }
   .play { display: inline-block; margin-left: -6px; line-height: 0; }
   .play img { display: block; height: 60px; width: auto; }
+  .soon { position: relative; display: inline-block; margin-left: -8px; line-height: 0; }
+  .soon img { display: block; height: 40px; width: auto; opacity: 0.4; filter: grayscale(1); }
+  .soon em {
+    position: absolute; top: -9px; right: -10px;
+    background: var(--green); color: #ffffff;
+    font: 700 0.62rem/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-style: normal; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 4px 7px; border-radius: 999px; white-space: nowrap;
+  }
   .app-foot a.policy { color: var(--muted); font-size: 0.9rem; }
   .note { color: var(--muted); font-size: 0.88rem; margin: 14px 0 0; }
 
@@ -194,7 +204,7 @@
   <section id="apps">
     <div class="wrap">
       <h2>Our apps</h2>
-      <p class="sub">All five are free on Google Play.</p>
+      <p class="sub">All five are free on Google Play, with iPhone versions coming soon.</p>
 
       <div class="apps">
 
@@ -214,7 +224,10 @@
               <li>Premium: background alerts when a tracker follows you, full scan history and no ads</li>
             </ul>
             <div class="app-foot">
-              <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.trackerradar"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
+              <div class="stores">
+                <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.trackerradar"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
+                <span class="soon" role="img" aria-label="App Store version coming soon"><img src="assets/app-store-badge.svg" alt="" width="120" height="40"><em>Coming soon</em></span>
+              </div>
               <a class="policy" href="/tracker-radar-privacy/">Privacy policy</a>
             </div>
             <p class="note">Scan results are processed on your device and never uploaded. Available in 10 languages.</p>
@@ -242,7 +255,10 @@
             <li>Export your readings to share with your doctor</li>
           </ul>
           <div class="app-foot">
-            <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.pressura"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
+            <div class="stores">
+              <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.pressura"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
+              <span class="soon" role="img" aria-label="App Store version coming soon"><img src="assets/app-store-badge.svg" alt="" width="120" height="40"><em>Coming soon</em></span>
+            </div>
             <a class="policy" href="/pressura-privacy/">Privacy policy</a>
           </div>
           <p class="note">Pressura is a logbook, not a medical device, and does not give medical advice.</p>
@@ -263,7 +279,10 @@
             <li>No account, no personal details and no device permissions</li>
           </ul>
           <div class="app-foot">
-            <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.loancompare"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
+            <div class="stores">
+              <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.loancompare"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
+              <span class="soon" role="img" aria-label="App Store version coming soon"><img src="assets/app-store-badge.svg" alt="" width="120" height="40"><em>Coming soon</em></span>
+            </div>
             <a class="policy" href="https://loans.soluntion.com/">Website</a>
             <a class="policy" href="https://loans.soluntion.com/privacy.html">Privacy policy</a>
           </div>
@@ -285,7 +304,10 @@
             <li>Share any fortune as a picture</li>
           </ul>
           <div class="app-foot">
-            <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.fortunecookie"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
+            <div class="stores">
+              <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.fortunecookie"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
+              <span class="soon" role="img" aria-label="App Store version coming soon"><img src="assets/app-store-badge.svg" alt="" width="120" height="40"><em>Coming soon</em></span>
+            </div>
             <a class="policy" href="/fortune-cookie-privacy/">Privacy policy</a>
           </div>
           <p class="note">Free with ads, with an optional one-time purchase to remove them.</p>
@@ -306,7 +328,10 @@
             <li>Your name and birthday stay on your phone</li>
           </ul>
           <div class="app-foot">
-            <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.fortunehoroscope"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
+            <div class="stores">
+              <a class="play" href="https://play.google.com/store/apps/details?id=com.soluntion.fortunehoroscope"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="155" height="60"></a>
+              <span class="soon" role="img" aria-label="App Store version coming soon"><img src="assets/app-store-badge.svg" alt="" width="120" height="40"><em>Coming soon</em></span>
+            </div>
             <a class="policy" href="/fortune-horoscope-privacy/">Privacy policy</a>
           </div>
           <p class="note">Free with ads, with an optional one-time purchase to remove them.</p>
@@ -345,7 +370,7 @@
       <a href="#privacy">Privacy policies</a>
       <a href="mailto:support@soluntion.com">Contact</a>
     </div>
-    <p>&copy; 2026 Soluntion Labs. Google Play and the Google Play logo are trademarks of Google LLC. AirTag is a trademark of Apple Inc.; SmartTag is a trademark of Samsung; Tile is a trademark of Tile, Inc. Our apps are independent and are not affiliated with or endorsed by these companies.</p>
+    <p>&copy; 2026 Soluntion Labs. Google Play and the Google Play logo are trademarks of Google LLC. Apple, the App Store and AirTag are trademarks of Apple Inc.; SmartTag is a trademark of Samsung; Tile is a trademark of Tile, Inc. Our apps are independent and are not affiliated with or endorsed by these companies.</p>
   </div>
 </footer>
 
