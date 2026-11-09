@@ -95,6 +95,23 @@
   .btn.ghost { background: transparent; color: var(--fg); border: 1px solid var(--card-edge); margin-left: 10px; font-weight: 600; }
   .btn.small { padding: 10px 18px; font-size: 0.92rem; }
 
+  .jump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; padding: 0; list-style: none; }
+  .jump a {
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 16px 7px 7px;
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    border-radius: 999px;
+    color: var(--fg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+  .jump a:hover { border-color: var(--green); }
+  .jump img { width: 30px; height: 30px; border-radius: 8px; }
+  .app { scroll-margin-top: 20px; }
+
   section { padding: 56px 0; border-top: 1px solid var(--card-edge); }
   h2 { font-size: 1.6rem; margin: 0 0 8px; }
   .sub { color: var(--muted); margin: 0 0 28px; }
@@ -213,6 +230,13 @@
       <p class="lede">From finding hidden trackers to logging your blood pressure, we build focused apps for Android and iOS, with no account required.</p>
       <a class="btn" href="#apps">See our apps</a>
       <a class="btn ghost" href="#contact">Contact us</a>
+      <ul class="jump" aria-label="Jump to an app">
+        <li><a href="#tracker-radar"><img src="assets/icon-192.png" alt="" width="30" height="30">Tracker Radar</a></li>
+        <li><a href="#pressura"><img src="assets/icon-pressura.webp" alt="" width="30" height="30">Pressura</a></li>
+        <li><a href="#loan-compare"><img src="assets/icon-loancompare.webp" alt="" width="30" height="30">Loan Compare</a></li>
+        <li><a href="#fortune-cookie"><img src="assets/icon-fortunecookie.webp" alt="" width="30" height="30">Fortune Cookie</a></li>
+        <li><a href="#fortune-horoscope"><img src="assets/icon-fortunehoroscope.webp" alt="" width="30" height="30">Fortune Horoscope</a></li>
+      </ul>
     </div>
   </div>
 
